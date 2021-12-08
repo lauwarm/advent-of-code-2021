@@ -1,0 +1,2 @@
+module AdventOfCode2021 {
+}
