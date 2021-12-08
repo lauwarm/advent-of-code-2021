@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 public class Day1 {
 	
 	public static int solution1() throws IOException {
+		
 		Stream<String> stringLines = Files.lines(Paths.get("input_day1_1.txt"));
 		List<Integer> intLines =  stringLines.map(Integer::valueOf)
 											 .collect(Collectors.toList());

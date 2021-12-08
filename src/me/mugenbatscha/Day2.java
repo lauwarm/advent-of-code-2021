@@ -6,9 +6,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class Day2 {
-	
 
-	
 	public static int solution1() throws IOException {
 		
 		var wrapper_horizontal = new Object() { int horizontal = 0; };
@@ -34,5 +32,7 @@ public class Day2 {
 		return wrapper_horizontal.horizontal * wrapper_depth.depth;
 		
 	}
+	
+	public static int solution2() { return 0; }
 
 }
