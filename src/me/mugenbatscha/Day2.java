@@ -12,7 +12,7 @@ public class Day2 {
 		var wrapper_horizontal = new Object() { int horizontal = 0; };
 		var wrapper_depth = new Object() { int depth = 0; };
 		
-		Stream<String> stringLines = Files.lines(Paths.get("input_day2.txt"));
+		Stream<String> stringLines = Files.lines(Paths.get("input/input_day2.txt"));
 		
 		stringLines.forEach(l -> {
 			if (l.matches("forward(.*)")) {				

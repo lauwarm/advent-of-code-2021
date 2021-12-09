@@ -18,7 +18,7 @@ public class Day3 {
 			wrapper_commonBit.commonBit[a] = 0;
 		}
 		
-		Stream<String> stringLines = Files.lines(Paths.get("input_day3.txt"));
+		Stream<String> stringLines = Files.lines(Paths.get("input/input_day3.txt"));
 
 		stringLines.forEach(l -> {
 			for (int a = 0; a < l.length(); a++) {

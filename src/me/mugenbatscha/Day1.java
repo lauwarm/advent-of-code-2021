@@ -11,7 +11,7 @@ public class Day1 {
 	
 	public static int solution1() throws IOException {
 		
-		Stream<String> stringLines = Files.lines(Paths.get("input_day1.txt"));
+		Stream<String> stringLines = Files.lines(Paths.get("input/input_day1.txt"));
 		List<Integer> intLines =  stringLines.map(Integer::valueOf)
 											 .collect(Collectors.toList());
 		stringLines.close();
