@@ -13,7 +13,6 @@ public class Day2 {
 		var wrapper_depth = new Object() { int depth = 0; };
 		
 		Stream<String> stringLines = Files.lines(Paths.get("input_day2_1.txt"));
-
 		
 		stringLines.forEach(l -> {
 			if(l.matches("forward(.*)")) {				
