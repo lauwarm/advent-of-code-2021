@@ -77,7 +77,6 @@ public class Day4 {
 				if (wrapper_boards.boards[e] == wrapper_drawNumbers.drawNumbers[d]) {
 					wrapper_boards.boards[e] = -1;
 				}
-
 				if(e%5 == 0) {
 					System.out.println(wrapper_boards.boards[e] + " " + wrapper_boards.boards[e+1]
 							+ " " + wrapper_boards.boards[e+2]+ " " + wrapper_boards.boards[e+3]
@@ -88,35 +87,16 @@ public class Day4 {
 							(wrapper_boards.boards[e+2] == -1) &&
 							(wrapper_boards.boards[e+3] == -1) &&
 							(wrapper_boards.boards[e+4] == -1))) {
-						System.out.println("WIN?: " + e);
-						//System.out.println(e);
-
+						System.out.println("WINNING INDEX?: " + e);
 					}
-					/*
-					if((wrapper_boards.boards[e]+
-							wrapper_boards.boards[e+5] +
-							wrapper_boards.boards[e+10] +
-							wrapper_boards.boards[e+15] +
-							wrapper_boards.boards[e+20]) == 0) {
-						//System.out.println("WIN?" + " " + wrapper_boards.boards[e]);
-						//System.out.println(e);
-					}
-					*/
-				}
-
-				if(e > 2495)
-				{}
-				else {
-					if((wrapper_boards.boards[e]
-							+ wrapper_boards.boards[e+1]
-							+ wrapper_boards.boards[e+2]
-							+ wrapper_boards.boards[e+3]
-							+ wrapper_boards.boards[e+4]) == 0) {
-						//System.out.println("WIN?" + " " + wrapper_boards.boards[e]);
-						//System.out.println(e);
-					}
-					else {
-						//System.out.println("LOSE? " + wrapper_boards.boards[e]);
+					if (e < 2480) {
+						if(((wrapper_boards.boards[e] == -1) &&
+								(wrapper_boards.boards[e+5] == -1) &&
+								(wrapper_boards.boards[e+10] == -1) &&
+								(wrapper_boards.boards[e+15] == -1) &&
+								(wrapper_boards.boards[e+20] == -1))) {
+							System.out.println("WINNING INDEX?: " + e);
+						}
 					}
 				}
 			}
