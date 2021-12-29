@@ -57,42 +57,72 @@ public class Day4 {
 
 		for (int b = 2; b < 601; b++) {
 			if (tmpArray[b].length() == 0) {
-				//System.out.println("Empty Line");
 				emptyLine += 1;
 			}
 			else {
 				for (int c = 0; c < tmpArray[b].split(" +").length; c++) {
 					if (tmpArray[b].split(" +")[c].length() == 0) {
-						//System.out.println("Empty");
 						emptyNumber += 1;
 					}
 					else {
-						//System.out.println(tmpArray[b].split(" +")[c]);
 						wrapper_boards.boards[leer] = Integer.parseInt(tmpArray[b].split(" +")[c]);
 						leer += 1;
 					}
 				}
 			}
 		}
-
-		int test = 0;
-
+		//System.out.println(wrapper_boards.boards[1817]);
 		for (int d = 0; d < wrapper_drawNumbers.drawNumbers.length; d++) {
-
 			for (int e = 0; e < wrapper_boards.boards.length; e++) {
 				if (wrapper_boards.boards[e] == wrapper_drawNumbers.drawNumbers[d]) {
-					wrapper_boards.boards[e] = 0;
+					wrapper_boards.boards[e] = -1;
+				}
+
+				if(e%5 == 0) {
+					System.out.println(wrapper_boards.boards[e] + " " + wrapper_boards.boards[e+1]
+							+ " " + wrapper_boards.boards[e+2]+ " " + wrapper_boards.boards[e+3]
+							+ " " + wrapper_boards.boards[e+4]);
+
+					if(((wrapper_boards.boards[e] == -1) &&
+							(wrapper_boards.boards[e+1] == -1) &&
+							(wrapper_boards.boards[e+2] == -1) &&
+							(wrapper_boards.boards[e+3] == -1) &&
+							(wrapper_boards.boards[e+4] == -1))) {
+						System.out.println("WIN?: " + e);
+						//System.out.println(e);
+
+					}
+					/*
+					if((wrapper_boards.boards[e]+
+							wrapper_boards.boards[e+5] +
+							wrapper_boards.boards[e+10] +
+							wrapper_boards.boards[e+15] +
+							wrapper_boards.boards[e+20]) == 0) {
+						//System.out.println("WIN?" + " " + wrapper_boards.boards[e]);
+						//System.out.println(e);
+					}
+					*/
+				}
+
+				if(e > 2495)
+				{}
+				else {
+					if((wrapper_boards.boards[e]
+							+ wrapper_boards.boards[e+1]
+							+ wrapper_boards.boards[e+2]
+							+ wrapper_boards.boards[e+3]
+							+ wrapper_boards.boards[e+4]) == 0) {
+						//System.out.println("WIN?" + " " + wrapper_boards.boards[e]);
+						//System.out.println(e);
+					}
+					else {
+						//System.out.println("LOSE? " + wrapper_boards.boards[e]);
+					}
 				}
 			}
 
 		}
 
-		System.out.println(test++);
-/*
-		for (int f = 0; f < wrapper_boards.boards.length; f++) {
-			System.out.println(wrapper_boards.boards[f]);
-		}
-*/
 		System.out.println("Board: " + wrapper_boards.boards.length);
 		System.out.println("DrawNumbers: " + wrapper_drawNumbers.drawNumbers.length);
 		//System.out.println(tmpArray[21].length());
