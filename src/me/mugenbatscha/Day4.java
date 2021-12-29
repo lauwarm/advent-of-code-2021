@@ -9,32 +9,7 @@ import java.util.stream.Stream;
 public class Day4 {
 
 	public static int solution1() throws IOException {
-		/*
-		 * BINGO
-		 * 25 numbers in a "board"
-		 * row or column complete to win
-		 * ---
-		 * put board into an array?
-		 * "marked" entries convert to 0
-		 * 10 possible win situations, 5 vert, 5 hori
-		 * 22 13 17 11  0
-		 * 8   2 23  4 24
-		 * 21  9 14 16  7
-		 *  6 10  3 18  5
-		 *  1 12 20 15 19
-		 *  ---
-		 *  22 13 16 11 0 8 2 23 4 24 21 9 14 16 7 6 10 3 18 5 1 12 20 15 19
-		 *  a____________ b__________ c___________ d__________ e____________
-		 *  a  b  c  d  e a b c  d e
-		 *  
-		 *  use a 2d array
-		 *  index for number of board
-		 *  
-		 *  iterate over array... set picked number to 0
-		 *  iterate over array... check if winning rule applies
-		 *  have a variable currentPickedNumber
-		 */
-		
+
 		var wrapper_drawNumbers = new Object() { int[] drawNumbers; };
 		var wrapper_boards = new Object() { int[] boards; };
 		var wrapper_currentNumber = new Object() { int currentNumber = 0; };
@@ -44,18 +19,18 @@ public class Day4 {
 		Stream<String> stringLines = Files.lines(Paths.get("input/input_day4.txt"));
 
 		tmpArray = stringLines.toArray(String[]::new);
-		wrapper_drawNumbers.drawNumbers = new int[100];
+		wrapper_drawNumbers.drawNumbers = new int[100];//100,27
 
-		for (int a = 0; a < 100; a++) {
-			//System.out.println(tmpArray[0].split(",")[a]);
+		for (int a = 0; a < 100; a++) { //100,27
 			wrapper_drawNumbers.drawNumbers[a] = Integer.parseInt(tmpArray[0].split(",")[a]);
 		}
+
 		int leer = 0;
 		int emptyLine = 0;
 		int emptyNumber = 0;
-		wrapper_boards.boards = new int[2500];
+		wrapper_boards.boards = new int[2500]; //2500,75
 
-		for (int b = 2; b < 601; b++) {
+		for (int b = 2; b < 601; b++) { //601,19
 			if (tmpArray[b].length() == 0) {
 				emptyLine += 1;
 			}
@@ -71,8 +46,11 @@ public class Day4 {
 				}
 			}
 		}
-		//System.out.println(wrapper_boards.boards[1817]);
+
+		int test = 0;
+		int temp = 0;
 		for (int d = 0; d < wrapper_drawNumbers.drawNumbers.length; d++) {
+			System.out.println("-");
 			for (int e = 0; e < wrapper_boards.boards.length; e++) {
 				if (wrapper_boards.boards[e] == wrapper_drawNumbers.drawNumbers[d]) {
 					wrapper_boards.boards[e] = -1;
@@ -88,29 +66,44 @@ public class Day4 {
 							(wrapper_boards.boards[e+3] == -1) &&
 							(wrapper_boards.boards[e+4] == -1))) {
 						System.out.println("WINNING INDEX?: " + e);
+						System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d-1]);
+						test = e;
+						wrapper_boards.boards[e] = wrapper_drawNumbers.drawNumbers[d];
 					}
-					if (e < 2480) {
+					if (e < 2480) { //2480,55
 						if(((wrapper_boards.boards[e] == -1) &&
 								(wrapper_boards.boards[e+5] == -1) &&
 								(wrapper_boards.boards[e+10] == -1) &&
 								(wrapper_boards.boards[e+15] == -1) &&
 								(wrapper_boards.boards[e+20] == -1))) {
 							System.out.println("WINNING INDEX?: " + e);
+							System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d-1]);
+							test = e;
+							wrapper_boards.boards[e] = wrapper_drawNumbers.drawNumbers[d];
 						}
 					}
 				}
 			}
+			if (test != 0) {
+				int test1 = test /25;
+				int boardStart = test1*25;
+				int ergebnis = 0;
+				System.out.println(boardStart);
+				for (int i = 0; i < 25; i++) {
+					if (wrapper_boards.boards[boardStart] != -1) {
+						System.out.println("Number: " + wrapper_boards.boards[boardStart]);
+						ergebnis += wrapper_boards.boards[boardStart];
 
+					}
+					boardStart++;
+				}
+				System.out.println("Ergebnis: " + ergebnis);
+				ergebnis = ergebnis * wrapper_drawNumbers.drawNumbers[d-1];
+
+				return ergebnis;
+			}
 		}
 
-		System.out.println("Board: " + wrapper_boards.boards.length);
-		System.out.println("DrawNumbers: " + wrapper_drawNumbers.drawNumbers.length);
-		//System.out.println(tmpArray[21].length());
-		//System.out.println(tmpArray[21].split(" +").length);
-		//System.out.println(leer);
-		//System.out.println(tmpArray[7].length());
-		//System.out.println(tmpArray[2].split(" ")[4]);
-	
 		stringLines.close();
 		
 		return 0;
