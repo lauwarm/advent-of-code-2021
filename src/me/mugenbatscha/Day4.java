@@ -43,15 +43,63 @@ public class Day4 {
 		
 		Stream<String> stringLines = Files.lines(Paths.get("input/input_day4.txt"));
 
-	//	stringLines.flatMap(x -> Arrays.stream(x.split(","))).forEach(System.out::println);
-		
 		tmpArray = stringLines.toArray(String[]::new);
-		
+		wrapper_drawNumbers.drawNumbers = new int[100];
+
 		for (int a = 0; a < 100; a++) {
-			System.out.println(tmpArray[0].split(",")[a]);
+			//System.out.println(tmpArray[0].split(",")[a]);
+			wrapper_drawNumbers.drawNumbers[a] = Integer.parseInt(tmpArray[0].split(",")[a]);
 		}
-		
-//		System.out.println(tmpArray[0].split(",")[1]);
+		int leer = 0;
+		int emptyLine = 0;
+		int emptyNumber = 0;
+		wrapper_boards.boards = new int[2500];
+
+		for (int b = 2; b < 601; b++) {
+			if (tmpArray[b].length() == 0) {
+				//System.out.println("Empty Line");
+				emptyLine += 1;
+			}
+			else {
+				for (int c = 0; c < tmpArray[b].split(" +").length; c++) {
+					if (tmpArray[b].split(" +")[c].length() == 0) {
+						//System.out.println("Empty");
+						emptyNumber += 1;
+					}
+					else {
+						//System.out.println(tmpArray[b].split(" +")[c]);
+						wrapper_boards.boards[leer] = Integer.parseInt(tmpArray[b].split(" +")[c]);
+						leer += 1;
+					}
+				}
+			}
+		}
+
+		int test = 0;
+
+		for (int d = 0; d < wrapper_drawNumbers.drawNumbers.length; d++) {
+
+			for (int e = 0; e < wrapper_boards.boards.length; e++) {
+				if (wrapper_boards.boards[e] == wrapper_drawNumbers.drawNumbers[d]) {
+					wrapper_boards.boards[e] = 0;
+				}
+			}
+
+		}
+
+		System.out.println(test++);
+/*
+		for (int f = 0; f < wrapper_boards.boards.length; f++) {
+			System.out.println(wrapper_boards.boards[f]);
+		}
+*/
+		System.out.println("Board: " + wrapper_boards.boards.length);
+		System.out.println("DrawNumbers: " + wrapper_drawNumbers.drawNumbers.length);
+		//System.out.println(tmpArray[21].length());
+		//System.out.println(tmpArray[21].split(" +").length);
+		//System.out.println(leer);
+		//System.out.println(tmpArray[7].length());
+		//System.out.println(tmpArray[2].split(" ")[4]);
 	
 		stringLines.close();
 		
