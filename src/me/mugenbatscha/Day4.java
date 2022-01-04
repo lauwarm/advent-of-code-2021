@@ -3,7 +3,6 @@ package me.mugenbatscha;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Day4 {
@@ -12,7 +11,6 @@ public class Day4 {
 
 		var wrapper_drawNumbers = new Object() { int[] drawNumbers; };
 		var wrapper_boards = new Object() { int[] boards; };
-		var wrapper_currentNumber = new Object() { int currentNumber = 0; };
 		
 		String[] inputFile;
 		
