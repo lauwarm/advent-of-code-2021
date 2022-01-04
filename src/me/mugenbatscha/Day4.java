@@ -56,20 +56,24 @@ public class Day4 {
 					wrapper_boards.boards[e] = -1;
 				}
 				if(e%5 == 0) {
-					System.out.println(wrapper_boards.boards[e] + " " + wrapper_boards.boards[e+1]
-							+ " " + wrapper_boards.boards[e+2]+ " " + wrapper_boards.boards[e+3]
-							+ " " + wrapper_boards.boards[e+4]);
-
-					if(((wrapper_boards.boards[e] == -1) &&
-							(wrapper_boards.boards[e+1] == -1) &&
-							(wrapper_boards.boards[e+2] == -1) &&
-							(wrapper_boards.boards[e+3] == -1) &&
-							(wrapper_boards.boards[e+4] == -1))) {
-						System.out.println("WINNING INDEX?: " + e);
-						System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d-1]);
-						test = e;
-						wrapper_boards.boards[e] = wrapper_drawNumbers.drawNumbers[d];
+					if (e < 2496) {
+						System.out.println(wrapper_boards.boards[e] + " " + wrapper_boards.boards[e + 1]
+								+ " " + wrapper_boards.boards[e + 2] + " " + wrapper_boards.boards[e + 3]
+								+ " " + wrapper_boards.boards[e + 4]);
 					}
+					if (e < 2496) {
+						if(((wrapper_boards.boards[e] == -1) &&
+								(wrapper_boards.boards[e+1] == -1) &&
+								(wrapper_boards.boards[e+2] == -1) &&
+								(wrapper_boards.boards[e+3] == -1) &&
+								(wrapper_boards.boards[e+4] == -1))) {
+							System.out.println("WINNING INDEX?: " + e);
+							System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d]); //-1
+							test = e;
+							wrapper_boards.boards[e] = wrapper_drawNumbers.drawNumbers[d];
+						}
+					}
+
 					if (e < 2480) { //2480,55
 						if(((wrapper_boards.boards[e] == -1) &&
 								(wrapper_boards.boards[e+5] == -1) &&
@@ -77,7 +81,7 @@ public class Day4 {
 								(wrapper_boards.boards[e+15] == -1) &&
 								(wrapper_boards.boards[e+20] == -1))) {
 							System.out.println("WINNING INDEX?: " + e);
-							System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d-1]);
+							System.out.println("WINNING NUMBER?: " + wrapper_drawNumbers.drawNumbers[d]); //-1
 							test = e;
 							wrapper_boards.boards[e] = wrapper_drawNumbers.drawNumbers[d];
 						}
@@ -98,7 +102,7 @@ public class Day4 {
 					boardStart++;
 				}
 				System.out.println("Ergebnis: " + ergebnis);
-				ergebnis = ergebnis * wrapper_drawNumbers.drawNumbers[d-1];
+				ergebnis = ergebnis * wrapper_drawNumbers.drawNumbers[d];
 
 				return ergebnis;
 			}
