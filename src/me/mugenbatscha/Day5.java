@@ -5,8 +5,8 @@ import java.io.IOException;
 public class Day5 {
 
     /*
-     * use 2d array?get biggest values and init array with that?
-     * 0,9 9,4 would be biggest values... so an array of int[9][9]
+     * use 2d array?get the biggest values and init array with that?
+     * 0,9 9,4 would be the biggest values... so an array of int[9][9]
      * 0 0 0 0 0 0 0 0 0 0
      * 1 1 1 1 1 1 1 1 1 1
      * 2 2 2 2 2 2 2 2 2 2
@@ -17,7 +17,7 @@ public class Day5 {
      * 7 7 7 7 7 7 7 7 7 7
      * 8 8 8 8 8 8 8 8 8 8
      * 9 9 9 9 9 9 9 9 9 9
-     * then i need a mapping from one end to the other...
+     * then I need a mapping from one end to the other...
      * 0 0 0 0 0 0 0 1 0 0
      * 0 0 1 0 0 0 0 1 0 0
      * 0 0 1 0 0 0 0 1 0 0
@@ -39,6 +39,8 @@ public class Day5 {
      * 3,4 -> 1,4 OK y1=y2
      * 0,0 -> 8,8 !=
      * 5,5 -> 8,2 !=
+     * i need an 2d array for the input data...
+     * have it as x1 y1 x2 y2
      */
     public static int solution1() throws IOException {
 
