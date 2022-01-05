@@ -1,6 +1,17 @@
 package me.mugenbatscha;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Day5 {
 
@@ -44,7 +55,75 @@ public class Day5 {
      */
     public static int solution1() throws IOException {
 
-        return 0;
+        int result = 0;
+
+        String stringLines = Files.readString(Paths.get("input/input_day5.txt"));
+
+        String[] splitted = Arrays.stream(stringLines.split("[,\\->\\n]"))
+                .map(String::trim)
+                .toArray(String[]::new);
+
+        int[] coordinatesA = new int[2000];
+
+        int b = 0;
+        for(int a = 0; a < splitted.length; a++) {
+            if (splitted[a] == "") { }
+            else {
+                coordinatesA[b] = Integer.parseInt(splitted[a]);
+                b++;
+            }
+        }
+
+        int d=0;
+        for(int c = 0; c < coordinatesA.length-4; c+=4) {
+            if((coordinatesA[c] == coordinatesA[c+2]) || (coordinatesA[c+1] == coordinatesA[c+3])) {
+                d+=4;
+            }
+        }
+        System.out.println("D: " +d);
+        int[] coordinatesB = new int[d];
+
+        int f = 0;
+        for(int c = 0; c < coordinatesA.length-4; c+=4) {
+            if((coordinatesA[c] == coordinatesA[c+2]) || (coordinatesA[c+1] == coordinatesA[c+3])) {
+                coordinatesB[f] = coordinatesA[c];
+                coordinatesB[f+1] = coordinatesA[c+1];
+                coordinatesB[f+2] = coordinatesA[c+2];
+                coordinatesB[f+3] = coordinatesA[c+3];
+                f+=4;
+            }
+        }
+
+        int max_x = 0, max_y = 0;
+        for (int e=0; e<coordinatesB.length-4; e+=4) {
+            if (coordinatesB[e] > max_x) {
+                max_x = coordinatesB[e];
+            }
+            if (coordinatesB[e + 1] > max_y) {
+                max_y = coordinatesB[e + 1];
+            }
+            if (coordinatesB[e + 2] > max_x) {
+                max_x = coordinatesB[e + 2];
+            }
+            if (coordinatesB[e + 3] > max_y) {
+                max_y = coordinatesB[e + 3];
+            }
+        }
+
+        /*
+        for(int i = 0; i < coordinatesB.length; i++) {
+            System.out.println(coordinatesB[i]);
+        }
+        */
+
+        System.out.println((max_x + " " + max_y));
+        int[][] board = new int[max_x][max_y];
+
+        for(int j = 0; j < coordinatesB.length-4; j+=4) {
+
+        }
+
+        return result;
     }
 
 }
