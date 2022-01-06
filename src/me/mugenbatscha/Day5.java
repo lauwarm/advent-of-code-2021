@@ -116,9 +116,11 @@ public class Day5 {
         }
         */
 
+        //order array from small to big coordinates
+
         System.out.println((max_x + " " + max_y));
         int[][] board = new int[max_x][max_y];
-
+        //the board
         for(int j = 0; j < coordinatesB.length-4; j+=4) {
 
         }
