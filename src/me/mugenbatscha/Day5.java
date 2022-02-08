@@ -13,7 +13,7 @@ public class Day5 {
 
         String[] inputFile = stringLines.toArray(String[]::new);
 
-        System.out.println(inputFile.length); //!
+        System.out.println(inputFile.length);
 
         int biggestX = 0, biggestY = 0;
         int cPosition = 0;
@@ -40,7 +40,7 @@ public class Day5 {
             }
         }
 
-        System.out.println(biggestX + " - " + biggestY); //!
+        System.out.println(biggestX + " - " + biggestY);
 
         int switchCoordinate;
         for (int a = 0; a < coordinates.length; a += 4) {
