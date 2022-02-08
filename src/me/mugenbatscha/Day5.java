@@ -84,4 +84,5 @@ public class Day5 {
     }
 
     public static int solution2() { return 0; }
+
 }
